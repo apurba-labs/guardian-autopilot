@@ -31,6 +31,19 @@ class MockProvider(AIProvider):
                 }
             ).decode()
 
+        if "Guardian Decision Agent" in system_prompt:
+            return orjson.dumps(
+                {
+                    "decision": "REQUIRE_APPROVAL",
+                    "approval_required": True,
+                    "decision_reasoning": (
+                        "Production credential rotation impacts "
+                        "live infrastructure."
+                    ),
+                }
+            ).decode()
+
+
         return orjson.dumps(
             {
                 "findings": [

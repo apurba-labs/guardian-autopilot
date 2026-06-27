@@ -44,6 +44,12 @@ class SecretFinding(BaseModel):
     severity: FindingSeverity = FindingSeverity.HIGH
     description: str | None = None
 
+class DecisionType(str, Enum):
+    """Decision made by the Decision Agent."""
+
+    AUTO_REMEDIATE = "AUTO_REMEDIATE"
+    REQUIRE_APPROVAL = "REQUIRE_APPROVAL"
+    ESCALATE = "ESCALATE"
 
 class Incident(BaseModel):
     """Main workflow object shared across every agent."""
@@ -57,4 +63,7 @@ class Incident(BaseModel):
     recommendation: list[str] = Field(default_factory=list)
     metadata: dict[str, Any] = Field(default_factory=dict)
     state: WorkflowState = WorkflowState.RECEIVED
+    decision: DecisionType | None = None
+    decision_reasoning: str = ""
+    approval_required: bool = False
     created_at: datetime = Field(default_factory=datetime.utcnow)

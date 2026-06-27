@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import orjson
 
-from src.models.incident import Incident, SecretFinding
+from src.models.incident import Incident, SecretFinding, WorkflowState, RiskLevel
 from src.prompts.parser import SYSTEM_PROMPT
 from src.services.ai.base import AIProvider
 
@@ -26,9 +26,13 @@ class ParserAgent:
                 "ParserAgent returned invalid JSON."
             )
 
-        incident.findings = [
+        incident.findings.extend(
             SecretFinding(**item)
             for item in payload.get("findings", [])
-        ]
+        )
+
+        incident.state = WorkflowState.PARSED
+        
+        incident.risk = RiskLevel.UNKNOWN
 
         return incident

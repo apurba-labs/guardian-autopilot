@@ -19,12 +19,18 @@ class MockProvider(AIProvider):
                 "findings": [
                     {
                         "type": "AWS Access Key",
+                        "provider":"AWS",
+                        "severity":"Critical",
+                        "description":"Production credential exposed",
                         "value": "AKIA****************",
                         "confidence": 0.99,
                         "location": "Line 4",
                     },
                     {
                         "type": "GitHub Personal Access Token",
+                        "provider":"GitHub",
+                        "severity":"Critical",
+                        "description":"Production credential exposed",
                         "value": "ghp****************",
                         "confidence": 0.98,
                         "location": "Line 8",

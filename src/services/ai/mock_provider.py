@@ -13,6 +13,23 @@ class MockProvider(AIProvider):
         user_prompt: str,
         temperature: float = 0.1,
     ) -> str:
+        
+        if "Guardian Investigation Agent" in system_prompt:
+            return orjson.dumps(
+                {
+                    "risk": "CRITICAL",
+                    "reasoning": (
+                        "Production AWS credentials and GitHub Personal "
+                        "Access Token were exposed."
+                    ),
+                    "recommendation": [
+                        "Rotate AWS credentials",
+                        "Revoke GitHub Personal Access Token",
+                        "Review audit logs",
+                        "Notify Security Team",
+                    ],
+                }
+            ).decode()
 
         return orjson.dumps(
             {

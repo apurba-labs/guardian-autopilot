@@ -52,7 +52,7 @@ class Incident(BaseModel):
     source: str
     raw_content: str
     findings: list[SecretFinding] = Field(default_factory=list)
-    risk: RiskLevel = RiskLevel.LOW
+    risk: RiskLevel = RiskLevel.UNKNOWN
     reasoning: str = ""
     recommendation: list[str] = Field(default_factory=list)
     metadata: dict[str, Any] = Field(default_factory=dict)

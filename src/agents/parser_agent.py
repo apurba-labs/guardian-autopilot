@@ -25,7 +25,11 @@ class ParserAgent:
             raise ValueError(
                 "ParserAgent returned invalid JSON."
             )
-
+            
+        for item in payload.get("findings", []):
+            if "severity" in item:
+                item["severity"] = item["severity"].upper()
+        
         incident.findings.extend(
             SecretFinding(**item)
             for item in payload.get("findings", [])

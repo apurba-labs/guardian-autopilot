@@ -25,7 +25,19 @@ def main() -> None:
     incident = parser.run(incident)
 
     console.rule("[bold green]Parser Agent Result")
-    console.print(incident.model_dump())
+    console.rule("[bold green]Parser Agent")
+
+    console.print(f"[cyan]State:[/] {incident.state.value}")
+    console.print(f"[cyan]Risk:[/] {incident.risk.value}")
+    console.print()
+
+    for finding in incident.findings:
+        console.print(
+            f"✓ {finding.type} "
+            f"({finding.provider}) "
+            f"[{finding.severity.value}] "
+            f"{finding.confidence:.0%}"
+        )
 
 
 if __name__ == "__main__":

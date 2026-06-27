@@ -1,0 +1,16 @@
+Subject: URGENT - Accidentally committed credentials
+
+Hi Security Team,
+
+While debugging our production deployment, I accidentally pushed the following credentials into a public GitHub repository.
+
+AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_PLACEHOLDER>
+AWS_SECRET_ACCESS_KEY=<AWS_SECRET_PLACEHOLDER>
+
+Repository:
+github.com/company/backend-api
+
+Please revoke them immediately.
+
+Thanks,
+Alex

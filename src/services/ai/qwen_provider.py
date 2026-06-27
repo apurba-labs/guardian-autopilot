@@ -1,17 +1,16 @@
-from __future__ import annotations
-
 from openai import OpenAI
 
 from config.settings import get_settings
+from .base import AIProvider
 
 
-class QwenClient:
-    """Wrapper around the Qwen Cloud OpenAI-compatible API."""
+class QwenProvider(AIProvider):
 
-    def __init__(self) -> None:
+    def __init__(self):
+
         settings = get_settings()
 
-        self._client = OpenAI(
+        self.client = OpenAI(
             api_key=settings.qwen_api_key,
             base_url=settings.qwen_base_url,
         )
@@ -26,7 +25,7 @@ class QwenClient:
         temperature: float = 0.1,
     ) -> str:
 
-        response = self._client.chat.completions.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             temperature=temperature,
             messages=[

@@ -1,0 +1,9 @@
+Internal Incident
+
+A Slack Bot token was exposed during a demo.
+
+SLACK_BOT_TOKEN=<SLACK_BOT_PLACEHOLDER>
+
+The screenshot was posted publicly.
+
+Please assess the impact.

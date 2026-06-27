@@ -1,0 +1,21 @@
+Yesterday during deployment I accidentally uploaded a screenshot to Discord.
+
+The screenshot contains:
+
+AWS_ACCESS_KEY_ID=<PRODUCTION_AWS_ACCESS_KEY>
+
+AWS_SECRET_ACCESS_KEY=<AWS_SECRET_KEY_PLACEHOLDER>
+
+GitHub Token
+
+GITHUB_PAT=<GITHUB_PAT_PLACEHOLDER>
+
+Slack Bot Token
+
+SLACK_BOT_TOKEN=<SLACK_BOT_PLACEHOLDER>
+
+The repository was public for around 18 minutes.
+
+Around 14 engineers could have viewed it.
+
+Please determine the overall business risk and recommend next actions.

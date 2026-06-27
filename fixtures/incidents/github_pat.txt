@@ -1,0 +1,10 @@
+GitHub Personal Access Token
+
+GITHUB_PAT=<GITHUB_PAT_PLACEHOLDER>
+
+This token was shared in a Slack conversation.
+
+Repository:
+company/payment-service
+
+Please investigate.

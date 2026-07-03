@@ -6,6 +6,10 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
 
+    api_url: str = Field(
+        default="http://127.0.0.1:8000/api/v1/scan",
+        alias="API_URL",
+    )
     dashscope_api_key: str = Field(alias="DASHSCOPE_API_KEY")
 
     qwen_base_url: str = Field(alias="QWEN_BASE_URL")

@@ -6,11 +6,11 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
 
-    qwen_api_key: str = Field(alias="QWEN_API_KEY")
+    dashscope_api_key: str = Field(alias="DASHSCOPE_API_KEY")
 
     qwen_base_url: str = Field(alias="QWEN_BASE_URL")
 
-    qwen_model: str = Field(default="qwen-plus", alias="QWEN_MODEL")
+    qwen_model: str = Field(default="qwen3.7-plus", alias="QWEN_MODEL")
 
     class Config:
         env_file = ".env"

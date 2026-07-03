@@ -5,8 +5,7 @@ from .qwen_provider import QwenProvider
 
 
 def get_provider():
-
-    if os.getenv("QWEN_API_KEY"):
+    if os.getenv("DASHSCOPE_API_KEY"):
         return QwenProvider()
 
     return MockProvider()

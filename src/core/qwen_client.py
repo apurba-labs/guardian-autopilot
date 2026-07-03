@@ -12,7 +12,7 @@ class QwenClient:
         settings = get_settings()
 
         self._client = OpenAI(
-            api_key=settings.qwen_api_key,
+            api_key=settings.dashscope_api_key,
             base_url=settings.qwen_base_url,
         )
 

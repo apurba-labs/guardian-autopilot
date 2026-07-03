@@ -1,17 +1,20 @@
+from __future__ import annotations
+
+import os
+
 from openai import OpenAI
 
-from config.settings import get_settings
 from .base import AIProvider
-
+from config.settings import get_settings
 
 class QwenProvider(AIProvider):
+    """Alibaba Cloud Qwen provider."""
 
-    def __init__(self):
-
+    def __init__(self) -> None:
         settings = get_settings()
 
         self.client = OpenAI(
-            api_key=settings.qwen_api_key,
+            api_key=settings.dashscope_api_key,
             base_url=settings.qwen_base_url,
         )
 
@@ -40,4 +43,4 @@ class QwenProvider(AIProvider):
             ],
         )
 
-        return response.choices[0].message.content or ""
+        return response.choices[0].message.content

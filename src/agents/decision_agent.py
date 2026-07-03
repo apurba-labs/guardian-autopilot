@@ -5,7 +5,7 @@ from src.models.incident import (
     Incident,
     WorkflowState,
 )
-from src.prompts.decision import SYSTEM_PROMPT
+from src.prompts.decision import DECISION_SYSTEM_PROMPT
 from src.services.ai.base import AIProvider
 
 
@@ -23,7 +23,7 @@ class DecisionAgent:
         }
 
         response = self.provider.chat(
-            system_prompt=SYSTEM_PROMPT,
+            system_prompt=DECISION_SYSTEM_PROMPT,
             user_prompt=orjson.dumps(payload).decode(),
         )
 
@@ -31,7 +31,12 @@ class DecisionAgent:
 
         incident.decision = DecisionType(result["decision"])
         incident.approval_required = result["approval_required"]
-        incident.decision_reasoning = result["decision_reasoning"]
+        incident.decision_reasoning = (
+                result.get("decision_reasoning")
+                or result.get("decision_reason")
+                or result.get("reasoning")
+                or ""
+            )
         incident.state = WorkflowState.DECIDED
 
         return incident

@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-import os
-
 from openai import OpenAI
 
-from .base import AIProvider
 from config.settings import get_settings
 
+from .base import AIProvider
+
+
 class QwenProvider(AIProvider):
-    """Alibaba Cloud Qwen provider."""
+    """Alibaba Cloud Qwen AI provider."""
 
     def __init__(self) -> None:
         settings = get_settings()

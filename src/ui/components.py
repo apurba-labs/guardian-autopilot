@@ -165,36 +165,23 @@ def footer():
         """
 <div style="
     text-align:center;
-    padding:20px;
+    padding:18px;
     color:#6b7280;
+    font-size:14px;
+    line-height:1.8;
 ">
 
-<h3 style="margin-bottom:8px;">
-🛡 Guardian Autopilot
-</h3>
+<b>🛡 Guardian Autopilot v1.0.1</b><br>
 
-<p>
-AI-Powered Multi-Agent Incident Response Platform
-</p>
+AI-Powered Multi-Agent Incident Response Platform<br><br>
 
-<p>
-Built with <b>Alibaba Cloud Qwen</b><br>
-Open Source by <b>Gotihub</b>
-</p>
+Powered by <b>Alibaba Cloud Qwen</b><br>
 
-<p style="margin-top:15px;">
-<a href="https://github.com/apurba-lab/guardian-autopilot" target="_blank">
-GitHub
-</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="https://gotihub.com" target="_blank">
-Gotihub
-</a>
-</p>
+Deployed on <b>Alibaba Cloud ECS</b><br>
 
-<p style="font-size:12px;margin-top:15px;">
+Open Source by <b>Gotihub</b><br><br>
+
 © 2026 Gotihub
-</p>
 
 </div>
 """,

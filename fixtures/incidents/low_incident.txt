@@ -1,0 +1,27 @@
+Subject: Development Environment Cleanup
+
+Developer Notes:
+
+A temporary debug log was discovered during routine housekeeping.
+
+Application:
+guardian-web
+
+Environment:
+Development
+
+Issue:
+
+- Debug mode was accidentally left enabled.
+- Application logs contain internal file paths.
+- Stack traces reveal package versions.
+- No passwords, API keys, tokens or customer data were exposed.
+
+Recommendation:
+
+- Disable debug mode.
+- Remove unnecessary logs.
+- Enable log rotation.
+
+Status:
+No evidence of credential exposure or unauthorized access.

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import requests
 import streamlit as st
-from config.settings import get_settings
 
+from config.settings import get_settings
 from src.ui.components import (
     footer,
     header,
@@ -15,31 +15,55 @@ from src.ui.theme import load_theme
 
 settings = get_settings()
 
+# ----------------------------------------------------
+# Page Configuration
+# ----------------------------------------------------
+
 load_theme()
 
 header()
+
+# ----------------------------------------------------
+# Incident Input
+# ----------------------------------------------------
 
 uploaded, text, scan = uploader()
 
 content = ""
 
-if uploaded:
-    content = uploaded.read().decode()
+if uploaded is not None:
+    content = uploaded.read().decode("utf-8", errors="ignore")
 
 elif text.strip():
-    content = text
+    content = text.strip()
+
+# ----------------------------------------------------
+# Scan
+# ----------------------------------------------------
 
 if scan:
 
     if not content:
-
-        st.error(
-            "Please upload or paste an incident."
-        )
-
+        st.warning("Please upload an incident file or paste incident text.")
         st.stop()
 
-    with st.spinner("Guardian Autopilot is analyzing..."):
+    progress = st.progress(0)
+
+    status = st.empty()
+
+    status.info("🔍 Parser Agent scanning incident...")
+    progress.progress(20)
+
+    status.info("🧠 Investigation Agent assessing risk...")
+    progress.progress(45)
+
+    status.info("⚖️ Decision Agent determining response...")
+    progress.progress(70)
+
+    status.info("📝 Report Agent generating executive report...")
+    progress.progress(90)
+
+    try:
 
         response = requests.post(
             settings.api_url,
@@ -50,14 +74,29 @@ if scan:
             timeout=180,
         )
 
+        response.raise_for_status()
         st.session_state["result"] = response.json()
+        progress.progress(100)
+
+        status.success("✅ Investigation completed successfully.")
+
+    except Exception as ex:
+        progress.empty()
+        status.empty()
+        st.error(f"Guardian API Error\n\n{ex}")
+        st.stop()
+
+# ----------------------------------------------------
+# Results
+# ----------------------------------------------------
 
 if "result" in st.session_state:
-
     result = st.session_state["result"]
-
     metrics(result)
-
     report(result["report"])
+
+# ----------------------------------------------------
+# Footer
+# ----------------------------------------------------
 
 footer()

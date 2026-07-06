@@ -1,0 +1,32 @@
+Subject: GitHub Repository Exposure
+
+Security Team Report
+
+Repository:
+guardian-ui
+
+Environment:
+Development
+
+Issue:
+
+A public GitHub repository accidentally exposed an internal configuration file.
+
+The following information was discovered:
+
+DATABASE_HOST=postgres.internal
+DATABASE_PORT=5432
+
+INTERNAL_API_URL=http://internal-api.local
+
+No passwords, tokens, API keys or secrets were present.
+
+Potential Risk:
+
+An attacker may gain knowledge about internal infrastructure and network topology.
+
+Recommendation:
+
+- Remove internal configuration files from public repositories.
+- Add .env files to .gitignore.
+- Review repository history.

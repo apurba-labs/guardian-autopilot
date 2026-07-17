@@ -1,21 +1,30 @@
+from .models import InvestigationRecord
 from .repository import MemoryRepository
 
+
 class MemoryService:
+    """Provides historical investigation correlation."""
+
     def __init__(self):
         self.repository = MemoryRepository()
 
-    def remember(self, record):
+    def remember(self, record: InvestigationRecord):
         self.repository.save(record)
 
-    def search(self, entities):
+    def correlate(self, entities: list[str]) -> list[dict]:
         history = self.repository.load()
 
         matches = []
 
-        for incident in history:
-            previous = set(incident.get("entities", []))
+        target = {e.lower() for e in entities}
 
-            if previous.intersection(entities):
+        for incident in history:
+            previous = {
+                e.lower()
+                for e in incident.get("entities", [])
+            }
+
+            if target.intersection(previous):
                 matches.append(incident)
 
         return matches

@@ -1,0 +1,41 @@
+[
+  {
+    "incident_id": "67998cdb-e106-4082-896d-e88905f775f3",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "A Discord screenshot exposed critical credentials including production AWS keys, a GitHub PAT, and a Slack bot token. Immediate rotation of all exposed secrets and an audit of associated services for unauthorized access are required.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T20:45:48.378544"
+  },
+  {
+    "incident_id": "4d793266-2f21-4a2c-baa8-fca0541cc6c8",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Multiple critical credentials, including production AWS keys, a GitHub PAT, and a Slack bot token, were exposed in a Discord screenshot. Immediate revocation and rotation of these secrets are required to prevent unauthorized access to infrastructure and internal systems.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T20:49:26.487905"
+  },
+  {
+    "incident_id": "aa4d0998-9f7d-4334-9837-89e43bda47ef",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Critical credentials including AWS keys, a GitHub PAT, and a Slack bot token were exposed in a Discord screenshot. Immediate rotation of all compromised secrets and audit of associated services are required to prevent infrastructure and data compromise.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T20:53:45.206359"
+  }
+]

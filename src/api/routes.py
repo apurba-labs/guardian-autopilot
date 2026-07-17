@@ -36,6 +36,7 @@ def scan(request: ScanRequest):
         incident_id=incident.id,
         state=incident.state.value,
         risk=incident.risk.value,
-        decision=incident.decision.value,
+        decision=incident.decision.value if incident.decision else None,
+        memory=incident.metadata.get("memory"),
         report=incident.metadata["report"],
     )

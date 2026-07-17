@@ -8,6 +8,7 @@ ENTITY_DISPLAY_NAMES = {
     "<SLACK_BOT_PLACEHOLDER>": "Slack Bot Token",
 }
 
+
 class ReportAgent:
     """Generates the final human-readable incident report."""
 
@@ -21,21 +22,27 @@ class ReportAgent:
             f"✓ {item}"
             for item in incident.recommendation
         )
-        
-        memory = incident.metadata.get("memory", {})
 
-        history = memory.get("history", [])
-        matched = memory.get("matched", False)
-        count = memory.get("count", 0)
-        
-        incident.state = WorkflowState.COMPLETED
-        
-        if matched:
-            repeated = sorted({
-                ENTITY_DISPLAY_NAMES.get(entity, entity)
-                for item in history
-                for entity in item.get("entities", [])
-            })
+        # -----------------------------
+        # Historical Correlation
+        # -----------------------------
+        memory = incident.metadata.get(
+            "memory",
+            {
+                "matched": False,
+                "count": 0,
+                "history": [],
+            },
+        )
+
+        if memory.get("matched"):
+            repeated = sorted(
+                {
+                    ENTITY_DISPLAY_NAMES.get(entity, entity)
+                    for item in memory.get("history", [])
+                    for entity in item.get("entities", [])
+                }
+            )
 
             indicators = "\n".join(f"• {item}" for item in repeated)
 
@@ -43,7 +50,7 @@ class ReportAgent:
 Historical Correlation
 ----------------------------------------
 Correlation Status : MATCH FOUND
-Previous Related Incidents : {count}
+Previous Related Incidents : {memory.get("count", 0)}
 
 Repeated Indicators
 {indicators}
@@ -52,14 +59,18 @@ Assessment
 This incident shares indicators with previous investigations,
 suggesting repeated credential exposure or an ongoing security issue.
 """.strip()
+
         else:
             historical_section = """
 Historical Correlation
 ----------------------------------------
 Correlation Status : NONE
+
 No previous related incidents found.
 """.strip()
-        
+
+        incident.state = WorkflowState.COMPLETED
+
         report = IncidentReport(
             title="Guardian Incident Report",
             summary=f"Overall Risk: {incident.risk.value}",
@@ -99,7 +110,7 @@ Recommended Actions
 {historical_section}
 """.strip(),
         )
-        
+
         incident.metadata["report"] = report.model_dump()
 
         return incident

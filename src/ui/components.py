@@ -7,6 +7,13 @@ ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = ROOT / "fixtures" / "incidents"
 MAX_FILE_SIZE = 200 * 1024 * 1024
 
+ENTITY_DISPLAY_NAMES = {
+    "<PRODUCTION_AWS_ACCESS_KEY>": "AWS Access Key",
+    "<AWS_SECRET_KEY_PLACEHOLDER>": "AWS Secret Access Key",
+    "<GITHUB_PAT_PLACEHOLDER>": "GitHub Personal Access Token",
+    "<SLACK_BOT_PLACEHOLDER>": "Slack Bot Token",
+}
+
 def _load_demo(filename: str):
     file = FIXTURES / filename
 
@@ -139,6 +146,54 @@ def metrics(result):
     with c3:
         st.metric("✅ Workflow",result["state"])
 
+
+def memory(result):
+
+    memory = result.get("memory", {})
+
+    st.divider()
+
+    st.subheader("🧠 Historical Correlation")
+
+    if not memory.get("matched"):
+        st.success("No previous related incidents found.")
+        return
+    
+    c1, c2 = st.columns(2)
+    with c1:
+        st.metric(
+            "Correlation",
+            "MATCH FOUND"
+        )
+
+    with c2:
+        st.metric(
+            "Previous Incidents",
+            memory["count"]
+        )
+        
+    st.markdown("### Repeated Indicators")
+    
+    history = memory.get("history", [])
+
+    entities = sorted({
+        entity
+        for item in history
+        for entity in item.get("entities", [])
+    })
+    
+    history = memory.get("history", [])
+
+    entities = sorted({
+        entity
+        for item in history
+        for entity in item.get("entities", [])
+    })
+    for item in entities:
+        st.write(
+            "•",
+            ENTITY_DISPLAY_NAMES.get(item, item)
+        )
 
 def report(report):
 

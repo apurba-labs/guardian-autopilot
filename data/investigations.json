@@ -50,5 +50,130 @@
       "<SLACK_BOT_PLACEHOLDER>"
     ],
     "created_at": "2026-07-17T21:15:35.425053"
+  },
+  {
+    "incident_id": "ac18a284-010a-413c-ab01-3e536f3903cf",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "A Discord screenshot containing multiple critical credentials, including production AWS keys, a GitHub token, and a Slack bot token, was identified. Immediate rotation of all exposed secrets and an audit of associated services for unauthorized access are required.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T21:37:29.303282"
+  },
+  {
+    "incident_id": "01b880dd-2151-4a66-bcd5-32f34292e7ef",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Investigation revealed the exposure of critical infrastructure and application credentials, including production AWS keys, a GitHub PAT, and a Slack bot token, via a Discord screenshot. Immediate credential rotation and access auditing are required to mitigate potential unauthorized access.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T21:50:53.430095"
+  },
+  {
+    "incident_id": "3a78ca91-02ba-448a-8c5a-2d16238e8804",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Investigation reveals the exposure of production AWS keys, a GitHub PAT, and a Slack bot token via a screenshot shared on Discord. Immediate credential rotation and comprehensive auditing of associated services are required to mitigate potential compromise.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T21:51:42.061308"
+  },
+  {
+    "incident_id": "e0f43750-a67c-4ab4-bdfd-22efea18ea0a",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Investigation reveals the exposure of multiple critical credentials, including production AWS keys, a GitHub PAT, and a Slack bot token, within a Discord screenshot. Immediate revocation of these secrets and an audit of associated services are required to prevent unauthorized access.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:06:13.168442"
+  },
+  {
+    "incident_id": "40893ed5-5a75-408a-943c-0766291e922d",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Critical credential exposure detected involving production AWS keys, a GitHub PAT, and a Slack token leaked via a Discord screenshot. Immediate rotation of all compromised secrets and audit of associated platforms is required to prevent infrastructure and data compromise.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:07:16.009774"
+  },
+  {
+    "incident_id": "8ef8c9da-77cc-49f1-9dca-ea255c9fb724",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "A Discord screenshot exposed multiple critical credentials, including AWS access keys, a GitHub personal access token, and a Slack bot token. Immediate rotation of all compromised secrets and an audit of associated services are required to mitigate potential infrastructure and data breaches.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:09:37.287718"
+  },
+  {
+    "incident_id": "7de02dbf-7739-4b49-89c5-b6dd8d55527f",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "An investigation revealed the exposure of production AWS keys, GitHub tokens, and Slack bot tokens via a Discord screenshot. Immediate credential rotation and access auditing are required to mitigate potential unauthorized access.",
+    "entities": [],
+    "created_at": "2026-07-17T22:12:09.201506"
+  },
+  {
+    "incident_id": "4809c261-a536-4eb5-bc30-7e117ac7c0a8",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Critical exposure of production AWS keys, GitHub PAT, and Slack bot tokens detected in a Discord screenshot. Immediate revocation of all compromised credentials and thorough audit of associated services are required to mitigate potential infrastructure and data breaches.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:33:07.163834"
+  },
+  {
+    "incident_id": "b6bc0d14-0aa5-48df-8278-774000d4aa87",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Critical exposure of production AWS keys, GitHub PAT, and Slack bot token detected in a Discord screenshot. Immediate credential rotation and audit of associated services are required to prevent unauthorized access.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:33:31.258318"
+  },
+  {
+    "incident_id": "17e84c14-2708-4193-b12e-8d749f35d0b3",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "A critical incident occurred where production AWS keys, a GitHub PAT, and a Slack bot token were exposed in a Discord screenshot. Immediate credential rotation and audit of associated services are required to mitigate potential compromise.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T22:37:21.542627"
   }
 ]

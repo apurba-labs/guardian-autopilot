@@ -8,6 +8,7 @@ from src.ui.components import (
     footer,
     header,
     metrics,
+    memory,
     report,
     uploader,
 )
@@ -75,7 +76,8 @@ if scan:
         )
 
         response.raise_for_status()
-        st.session_state["result"] = response.json()
+        result = response.json()
+        st.session_state["result"] = result
         progress.progress(100)
 
         status.success("✅ Investigation completed successfully.")
@@ -93,6 +95,7 @@ if scan:
 if "result" in st.session_state:
     result = st.session_state["result"]
     metrics(result)
+    memory(result)
     report(result["report"])
 
 # ----------------------------------------------------

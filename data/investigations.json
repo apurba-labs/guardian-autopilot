@@ -37,5 +37,18 @@
       "<SLACK_BOT_PLACEHOLDER>"
     ],
     "created_at": "2026-07-17T20:53:45.206359"
+  },
+  {
+    "incident_id": "fe35c95a-7716-40f6-af11-223a4c7ba60c",
+    "risk": "CRITICAL",
+    "decision": "PENDING",
+    "summary": "Critical exposure of multiple high-privilege credentials, including AWS keys, a GitHub PAT, and a Slack bot token, via a Discord screenshot. Immediate rotation of all exposed secrets and auditing of associated platforms for unauthorized access is required.",
+    "entities": [
+      "<PRODUCTION_AWS_ACCESS_KEY>",
+      "<AWS_SECRET_KEY_PLACEHOLDER>",
+      "<GITHUB_PAT_PLACEHOLDER>",
+      "<SLACK_BOT_PLACEHOLDER>"
+    ],
+    "created_at": "2026-07-17T21:15:35.425053"
   }
 ]

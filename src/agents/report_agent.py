@@ -1,6 +1,12 @@
 from src.models.incident import Incident, WorkflowState
 from src.models.report import IncidentReport
 
+ENTITY_DISPLAY_NAMES = {
+    "<PRODUCTION_AWS_ACCESS_KEY>": "AWS Access Key",
+    "<AWS_SECRET_KEY_PLACEHOLDER>": "AWS Secret Access Key",
+    "<GITHUB_PAT_PLACEHOLDER>": "GitHub Personal Access Token",
+    "<SLACK_BOT_PLACEHOLDER>": "Slack Bot Token",
+}
 
 class ReportAgent:
     """Generates the final human-readable incident report."""
@@ -16,7 +22,43 @@ class ReportAgent:
             for item in incident.recommendation
         )
         
+        memory = incident.metadata.get("memory", {})
+
+        history = memory.get("history", [])
+        matched = memory.get("matched", False)
+        count = memory.get("count", 0)
+        
         incident.state = WorkflowState.COMPLETED
+        
+        if matched:
+            repeated = sorted({
+                ENTITY_DISPLAY_NAMES.get(entity, entity)
+                for item in history
+                for entity in item.get("entities", [])
+            })
+
+            indicators = "\n".join(f"• {item}" for item in repeated)
+
+            historical_section = f"""
+Historical Correlation
+----------------------------------------
+Correlation Status : MATCH FOUND
+Previous Related Incidents : {count}
+
+Repeated Indicators
+{indicators}
+
+Assessment
+This incident shares indicators with previous investigations,
+suggesting repeated credential exposure or an ongoing security issue.
+""".strip()
+        else:
+            historical_section = """
+Historical Correlation
+----------------------------------------
+Correlation Status : NONE
+No previous related incidents found.
+""".strip()
         
         report = IncidentReport(
             title="Guardian Incident Report",
@@ -44,7 +86,7 @@ Findings
 
 Investigation Summary
 ----------------------------------------
-{incident.reasoning}
+{incident.metadata.get("summary", incident.reasoning)}
 
 Decision Summary
 ----------------------------------------
@@ -53,6 +95,8 @@ Decision Summary
 Recommended Actions
 ----------------------------------------
 {recommendations}
+
+{historical_section}
 """.strip(),
         )
         

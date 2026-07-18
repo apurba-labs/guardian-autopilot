@@ -4,17 +4,19 @@
 
 **Built with Alibaba Cloud Qwen** • **An Open Source Project by Gotihub**
 
-Guardian Autopilot is an AI-powered multi-agent incident response platform that detects exposed credentials, investigates security incidents, evaluates operational risk, and generates executive incident reports using Alibaba Cloud Qwen.
+Guardian Autopilot is an AI-powered multi-agent incident response platform that detects exposed credentials, investigates security incidents, correlates historical investigations, evaluates operational risk, and generates executive incident reports using Alibaba Cloud Qwen.
 
 Developers can interact with Guardian through a powerful CLI, REST API, or the Guardian Console, making it suitable for local development, cloud deployment, and production-ready security workflows.
 
-## 🌐 Live Demo
+---
 
-**Guardian Console**
+# 🌐 Live Demo
+
+### Guardian Console
 
 https://guardian.gotihub.com
 
-**API Documentation**
+### API Documentation
 
 https://guardian.gotihub.com/docs
 
@@ -44,12 +46,14 @@ https://guardian.gotihub.com/docs
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-- 🤖 Multi-Agent Incident Response
+- 🤖 AI Multi-Agent Incident Response
 - 🔍 Intelligent Secret Detection
-- 🧠 AI Risk Investigation
-- ⚖️ Human Approval Decisions
+- 🧠 AI Security Investigation
+- 🧠 Historical Incident Correlation
+- 💾 Investigation Memory
+- ⚖️ Human Approval Decision Engine
 - 📄 Executive Incident Reports
 - ⚡ FastAPI REST API
 - 🖥 Interactive Streamlit Console
@@ -62,21 +66,26 @@ https://guardian.gotihub.com/docs
 
 # 🏆 Why Guardian Autopilot?
 
-Guardian Autopilot demonstrates a complete AI-powered incident response workflow:
+Guardian Autopilot demonstrates a complete AI-powered incident response workflow.
 
-- Detects exposed credentials from text or screenshots
-- Performs AI-assisted security investigation
-- Evaluates operational risk
-- Determines remediation strategy
-- Produces executive-ready incident reports
-- Supports CLI, REST API, and a web-based Guardian Console
-- Powered by Alibaba Cloud Qwen through a provider abstraction layer
+Instead of treating every incident in isolation, Guardian remembers previous investigations and correlates repeated indicators to provide historical context for security analysts.
+
+The platform can:
+
+- Detect exposed credentials from text and logs
+- Perform AI-assisted security investigations
+- Correlate incidents with historical investigations
+- Evaluate operational risk
+- Determine human approval requirements
+- Produce executive-ready incident reports
+- Support CLI, REST API, and a web-based Guardian Console
+- Run locally or on Alibaba Cloud ECS
 
 ---
 
 # Project Architecture
 
-```
+```text
                      Internet
                          │
                          ▼
@@ -96,13 +105,15 @@ Guardian Autopilot demonstrates a complete AI-powered incident response workflow
                          ▼
                Guardian Orchestrator
                          │
-        ┌────────┬────────┬────────┬────────┐
-        ▼        ▼        ▼        ▼
-      Parser  Investigation Decision Report
-                         │
-                         ▼
-               Alibaba Cloud Qwen
-
+      ┌────────┬──────────┬──────────┬────────┬────────┐
+      ▼        ▼          ▼          ▼        ▼
+    Parser  Investigation  Memory   Decision  Report
+                            │
+                            ▼
+                 Historical Incident Store
+                            │
+                            ▼
+                 Alibaba Cloud Qwen
 ```
 
 ---
@@ -121,7 +132,7 @@ cp .env.example .env
 
 Configure
 
-```
+```env
 DASHSCOPE_API_KEY=your_api_key
 ```
 
@@ -197,7 +208,7 @@ http://localhost:8501
 
 # 🧪 Verification & Testing
 
-Run the following commands to verify that Guardian Autopilot is working correctly.
+Run the following commands to verify Guardian Autopilot.
 
 ### Environment
 
@@ -255,19 +266,21 @@ Alibaba Cloud Qwen Connectivity
 uv run python -m tests.integration.test_alibaba_connection
 ```
 
-### REST API
+---
 
-Start the API:
+### REST API
 
 ```bash
 guardian serve
 ```
 
-Open Swagger:
+Swagger
 
 ```
 http://localhost:8000/docs
 ```
+
+---
 
 ### Guardian Console
 
@@ -275,7 +288,7 @@ http://localhost:8000/docs
 streamlit run src/ui/app.py
 ```
 
-Open:
+Open
 
 ```
 http://localhost:8501
@@ -283,15 +296,15 @@ http://localhost:8501
 
 ---
 
-## Production Deployment
+# Production Deployment
 
 Guardian Autopilot is deployed on **Alibaba Cloud ECS** using:
 
-- Docker Compose
-- Dockerized Nginx Reverse Proxy
+- Alibaba Cloud Qwen
 - FastAPI
 - Streamlit
-- Alibaba Cloud Qwen
+- Docker Compose
+- Dockerized Nginx Reverse Proxy
 - HTTPS (Let's Encrypt)
 
 ---
@@ -305,9 +318,9 @@ Guardian Autopilot is deployed on **Alibaba Cloud ECS** using:
 - Streamlit
 - Typer CLI
 - Rich
-- Nginx
 - Docker
 - Docker Compose
+- Nginx
 - uv
 
 ---
@@ -317,6 +330,8 @@ Guardian Autopilot is deployed on **Alibaba Cloud ECS** using:
 ## v1.0
 
 - ✅ Multi-Agent Workflow
+- ✅ Historical Incident Correlation
+- ✅ Investigation Memory
 - ✅ Guardian CLI
 - ✅ REST API
 - ✅ Guardian Console
@@ -350,4 +365,4 @@ MIT License
 
 Built with ❤️ using Alibaba Cloud Qwen
 
-An Open Source Project by Gotihub
+An Open Source Project by **Gotihub**

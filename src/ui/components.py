@@ -14,6 +14,14 @@ ENTITY_DISPLAY_NAMES = {
     "<SLACK_BOT_PLACEHOLDER>": "Slack Bot Token",
 }
 
+INDICATOR_ORDER = [
+    "AWS Access Key",
+    "AWS Secret Access Key",
+    "GitHub Personal Access Token",
+    "Slack Bot Token",
+]
+
+
 def _load_demo(filename: str):
     file = FIXTURES / filename
 

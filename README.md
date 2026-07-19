@@ -42,7 +42,7 @@ https://guardian.gotihub.com/docs
 
 # Developer CLI
 
-![CLI](docs/images/cli.png)
+![CLI](docs/images/autopilot-cli.png)
 
 ---
 
